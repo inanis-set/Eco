@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container rounded" id="aboutus">
+  С экологической стороны водородное топливо очень чистое и экологичное . Все, что остается после внутреннего сгорания – это водяной пар. Безусловно, при расходовании сгорают разные масла, но их токсичный выброс в разы меньше по сравнению с бензиновым.
+</div>
+<div class="image__wrapper" id="img-to-c">
+  <img src="{{ url_for('static', filename='ECOLOGY.jpg')}}" class="fz__minimized" alt="клик для увеличения" title="Автобус с водородным двигателем">
+</div>
+{% endblock %}

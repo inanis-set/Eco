@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div align="center">
+<div id="timer-box" align="center">
+<div class="container rounded" id="aboutus">
+    <div class="timer">
+        <div class="timer_item years">00</div>
+        <div class="timer_item days">00</div>
+        <div class="timer_item hours">00</div>
+        <div class="timer_item minutes">00</div>
+        <div class="timer_item seconds">00</div>
+      </div>
+</div>
+</div>
+</div>
+
+
+<div class="forma rounded">
+  <div class="form-at rounded">
+    <h5>Свяжитесь с нами</h5>
+    <form method="post">
+      <div class="validate-input-at" data-validate="Обязательное поле">
+          <textarea id="textinput" class="input-at" name="message" placeholder="Ваше сообщение"></textarea>
+          <span class="focus-input-at"></span>
+      </div>
+      <input type="hidden" name="subject-at" value="Тема формы">
+      <div id="feed-btns">
+        <button name="feedback" id="submit-at" class="form-at-btn" disabled>Отправить</button>
+      
+        <button id="like" onclick="liked()" name="like_button" class="like-btn">
+        <i class="fa fa-thumbs-up"></i>
+        </button>
+        <span>{{ likes }}</span>
+      </div>
+    </form>
+  </div>
+  
+  
+  <div class="result-at"></div>
+  <div class="image__wrapper">
+    <img src="{{ url_for('static', filename='TIMER.png')}}" class="fz__minimized" alt="клик для увеличения" title="Еще подожди">
+  </div>
+</div>
+<script type="text/javascript">
+  if("{{ is_exists }}" == "True"){
+    var element = document.getElementById("like");
+    element.classList.toggle("liked");
+  }
+</script>
+
+<script src={{url_for('static', filename='timer.js')}}></script>
+
+{% endblock %}

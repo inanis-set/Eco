@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container rounded" id="aboutus">
+  Биофотолиз воды — разложение воды на водород и кислород с участием микробиологических систем.
+Во время фотосинтеза цианобактерии и зеленые водоросли расщепляют воду на ионы водорода и электроны.Фотосистема II Chlamydomonas reinhardtii производит в прямом солнечном излучении 80% электронов, которые в конечном итоге находят свое место в газообразном водороде.
+
+</div>
+<div class="image__wrapper" id="img-to-c">
+    <img src="{{ url_for('static', filename='ABOUT.jpg')}}" class="fz__minimized" alt="клик для увеличения" title="Среда жизни хламидомонад">
+  </div>
+{% endblock %}

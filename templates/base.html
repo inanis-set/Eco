@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Водород для Будущего</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbars/">
+  <link href={{url_for('static', filename='bootstrap.min.css')}} rel="stylesheet">
+  <link rel="icon" href={{url_for('static', filename='LOGO.svg')}} type=" image/svg+xml">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href={{url_for('static', filename='style.css')}}>
+  <link rel="stylesheet" type="text/css" href={{url_for('static', filename='timer.css')}}>
+</head>
+<body>
+<main>
+  <div class="container" id="myheader">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Eleventh navbar example">
+      <div class="container-fluid">
+        <a class="navbar-brand"><img id="LOGO" src={{url_for('static', filename='LOGO.svg')}}></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Водород для Будущего</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Навигация</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown09">
+                <li><a class="dropdown-item" href="/about">О проекте</a></li>
+                <li><a class="dropdown-item" href="/photosystem">Фотосистема</a></li>
+                <li><a class="dropdown-item" href="/history">История</a></li>
+                <li><a class="dropdown-item" href="/bioreactor">Биореактор</a></li>
+                <li><a class="dropdown-item" href="/hengine">Водородный двигатель</a></li>
+                <li><a class="dropdown-item" href="/ecology">Экологическая сторона</a></li>
+                <li><a class="dropdown-item" href="/economy">Экономическая сторона</a></li>
+                <li><a class="dropdown-item" href="/faq">FAQ</a></li>
+                <li><a class="dropdown-item" href="/timer">Таймер</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+{% block content %}{% endblock %}
+
+
+
+
+<div class="container" id="myheader">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="myheader2" aria-label="Eleventh navbar example">
+    <div class="container-fluid">
+      <h6 align="center">©Copyrights Gachi_Clubs 2022</h6>
+    </div>
+  </nav>
+</div>
+
+</main>
+<script src={{url_for('static', filename='bootstrap.bundle.min.js')}}></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src={{url_for('static', filename='script.js')}}></script>
+<script type="text/javascript">$('.fz__minimized').litezoom({speed:400, viewTitle:true});</script>
+<script type="text/javascript">
+document.onkeydown = function(event) {
+    if (event.ctrlKey && (event.keyCode == 85) || (event.ctrlKey && event.shiftKey && (event.keyCode == 73)) || (event.ctrlKey && event.shiftKey && (event.keyCode == 74)) || event.keyCode == 123) {
+        return false
+    }
+}
+document.oncontextmenu = function(){
+    return false
+}
+</script>
+</body>
+</html>
