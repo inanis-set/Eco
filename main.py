@@ -17,7 +17,53 @@ class Article(db.Model):
         return '<Article %r>' % self.id
 
 
-def make_page(pname):
+@site.route('/')
+def index():
+    return render_template('index.html')
+
+
+@site.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@site.route('/photosystem')
+def photosystem():
+    return render_template('photosystem.html')
+
+
+@site.route('/history')
+def history():
+    return render_template('history.html')
+
+
+@site.route('/bioreactor')
+def bioreactor():
+    return render_template('bioreactor.html')
+
+
+@site.route('/hengine')
+def hengine():
+    return render_template('hengine.html')
+
+
+@site.route('/ecology')
+def ecology():
+    return render_template('ecology.html')
+
+
+@site.route('/economy')
+def economy():
+    return render_template('economy.html')
+
+
+@site.route('/faq')
+def faq():
+    return render_template('faq.html')
+
+
+@site.route('/timer', methods=['POST', 'GET'])
+def timer():
     likes = db.session.query(Article).count()
     visitor_addr = request.environ['HTTP_X_FORWARDED_FOR']
     #visitor_addr = request.environ['REMOTE_ADDR']
@@ -29,69 +75,19 @@ def make_page(pname):
                 db.session.delete(Article.query.get(existence.id))
                 db.session.commit()
                 likes = db.session.query(Article).count()
-                return redirect(url_for(f'{pname}', is_exists=False))
+                return redirect(url_for('timer', is_exists=False))
             else:
                 db.session.add(Article(visitor=visitor_addr))
                 db.session.commit()
                 likes = db.session.query(Article).count()
-                return redirect(url_for(f'{pname}', is_exists=True))
+                return redirect(url_for('timer', is_exists=True))
         elif 'feedback' in request.form:
             feedback = request.form['message']
             bot.send_message(CHAT_ID, feedback)
-            return redirect(url_for(f'{pname}'))
+            return redirect(url_for('timer'))
         else:
             pass # unknown
-    return render_template(f'{pname}.html', likes=likes, is_exists=is_exists)
-
-
-@site.route('/', methods=['POST', 'GET'])
-def index():
-    return make_page('index')
-
-
-@site.route('/about', methods=['POST', 'GET'])
-def about():
-    return make_page('about')
-
-
-@site.route('/photosystem', methods=['POST', 'GET'])
-def photosystem():
-    return make_page('photosystem')
-
-
-@site.route('/history', methods=['POST', 'GET'])
-def history():
-    return make_page('history')
-
-
-@site.route('/bioreactor', methods=['POST', 'GET'])
-def bioreactor():
-    return make_page('bioreactor')
-
-
-@site.route('/hengine', methods=['POST', 'GET'])
-def hengine():
-    return make_page('hengine')
-
-
-@site.route('/ecology', methods=['POST', 'GET'])
-def ecology():
-    return make_page('ecology')
-
-
-@site.route('/economy', methods=['POST', 'GET'])
-def economy():
-    return make_page('economy')
-
-
-@site.route('/faq', methods=['POST', 'GET'])
-def faq():
-    return make_page('faq')
-
-
-@site.route('/timer', methods=['POST', 'GET'])
-def timer():
-    return make_page('timer')
+    return render_template('timer.html', likes=likes, is_exists=is_exists)
 
 if __name__ == '__main__':
     site.run(debug=False)
